@@ -22,28 +22,28 @@ def get_file_list(parent,drive=None,gauth=None):
 
 
 # def SyncDrive(gauth):
-    drive = GoogleDrive(gauth)
-    audio.truncate()
-    folder.truncate()
-    print("syncing drive")
-    for i in catgry.keys():
-        songs_by_cat = []
-        files = get_file_list(catgry.get(i),drive)
-        for k in files:
-            if k['mimeType'] == "application/vnd.google-apps.folder":
-                songs_by_art = []
-                for g in get_file_list(k['id'],drive):# songs with artist
-                    name,id,cat,artist = g['title'],g['id'],i,k['title']
-                    songs_by_art.append({"name":name,"id":id})
-                 #   get_album_art(id)
-                    audio_update(name=name,id=id,cat=cat,art=artist)
-                folder.insert({artist:songs_by_art,"id":k['id'],"name":artist})
-            else:#songs without artist
-                name,id,cat,artist = k['title'],k['id'],i,None
-                audio_update(name=name,id=id,cat=cat,art=artist)
-                #get_album_art(id)
-                songs_by_cat.append({"name":name,"id":id})
-        folder.insert({i:songs_by_cat,"id":catgry.get(i),"name":i})
+    # drive = GoogleDrive(gauth)
+    # audio.truncate()
+    # folder.truncate()
+    # print("syncing drive")
+    # for i in catgry.keys():
+    #     songs_by_cat = []
+    #     files = get_file_list(catgry.get(i),drive)
+    #     for k in files:
+    #         if k['mimeType'] == "application/vnd.google-apps.folder":
+    #             songs_by_art = []
+    #             for g in get_file_list(k['id'],drive):# songs with artist
+    #                 name,id,cat,artist = g['title'],g['id'],i,k['title']
+    #                 songs_by_art.append({"name":name,"id":id})
+    #              #   get_album_art(id)
+    #                 audio_update(name=name,id=id,cat=cat,art=artist)
+    #             folder.insert({artist:songs_by_art,"id":k['id'],"name":artist})
+    #         else:#songs without artist
+    #             name,id,cat,artist = k['title'],k['id'],i,None
+    #             audio_update(name=name,id=id,cat=cat,art=artist)
+    #             #get_album_art(id)
+    #             songs_by_cat.append({"name":name,"id":id})
+    #     folder.insert({i:songs_by_cat,"id":catgry.get(i),"name":i})
 
 
-    print("drive is synced ")
+    # print("drive is synced ")
