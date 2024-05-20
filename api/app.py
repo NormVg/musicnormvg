@@ -1,12 +1,12 @@
 from flask import Flask,send_file,request,jsonify,redirect
 from flask_cors import CORS
+from pydrive2.auth import GoogleAuth
 
 import manager
 
 app = Flask(__name__)
 CORS(app)
 
-from pydrive2.auth import GoogleAuth
 gauth = GoogleAuth()
 
 @app.route("/",methods=["GET","POST"])
